@@ -13,7 +13,7 @@ def render_response():
         response = "Hey! That's my favorite color, too!"
     else:
         response = "That's a great one! Mine is blue."
-    return render_template('response.html')
+    return render_template('response.html', resonseFromServer=response) #jinja variable=python variable
     
     
 if __name__=="__main__":
