@@ -2,18 +2,19 @@ from flask import Flask, url_for, render_template, request
 
 app = Flask(__name__) #__name__ = "__main__" if this is the file that was run.  Otherwise, it is the name of the file (ex. webapp)
 
-@app.route("/")
+@app.route("/",)
 def render_main():
     return render_template('home.html')
 
-@app.route("/response")
+@app.route("/response", methods=['POST', 'GET'])
 def render_response():
-    favorite_color = request.args['color'] # get user's imput for color imput
-    if favorite_color == "blue":
-        response = "Hey! That's my favorite color, too!"
-    else:
-        response = "That's a great one! Mine is blue."
-    return render_template('response.html', responseFromServer=response) #jinja variable=python variable
+    favorite_color = request.form['color'] #get user's input for color input
+    if request.method == 'POST':
+        if favorite_color == "pink":
+            response = "That's my favorite color, too!"
+        else:
+            response = "My favorite color is pink."
+    return render_template('response.html', responseFromServer=response)
     
     
 if __name__=="__main__":
