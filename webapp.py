@@ -8,8 +8,9 @@ def render_main():
 
 @app.route("/response", methods=['POST', 'GET'])
 def render_response():
-    favorite_color = request.form['color'] #get user's input for color input
+    response = ''
     if request.method == 'POST':
+        favorite_color = request.form['color'] #get user's input for color input
         if favorite_color == "pink":
             response = "That's my favorite color, too!"
         else:
